@@ -1,0 +1,39 @@
+{
+  "@context": [
+      "https://www.w3.org/ns/did/v1",
+      "https://did.kataru.io/did/v1",
+      "https://w3id.org/security/suites/secp256k1recovery-2020/v2"
+  ],
+  "id": "did:content:03Z5hdN7vxXyp5YW4WGqMYowMAB3SLG6tN2UjWb2DfAmkTHC1WYDfnjB",
+  "controller": [
+    "did:content:03Z5hdN7vxXyp5YW4WGqMYowMAB3SLG6tN2UjWb2DfAmkTHC1WYDfnjB#author",
+    "did:content:03Z5hdN7vxXyp5YW4WGqMYowMAB3SLG6tN2UjWb2DfAmkTHC1WYDfnjB#rights-holder"
+  ],
+  "updation":["#keys-1", "#keys-2"],
+  "verificationMethod": [
+     {
+        "id": "did:key:3TL4YbgfwnJmJhyxKKDRpA81vB1QkWvvWRMioKQb6yv9HYwsZCpnVWB#controller",
+        "type": "EcdsaSecp256k1RecoveryMethod2020", 
+        "controller": "did:key:3TL4YbgfwnJmJhyxKKDRpA81vB1QkWvvWRMioKQb6yv9HYwsZCpnVWB"
+     },
+     {
+        "id": "did:key:3qrgME9eV7brjYsx3Ebbp9hubiQna1wcD1FdzuG4P1V6xmZwSdLXzCG#delegate",
+        "type": "EcdsaSecp256k1RecoveryMethod2020", 
+        "controller": "did:key:3qrgME9eV7brjYsx3Ebbp9hubiQna1wcD1FdzuG4P1V6xmZwSdLXzCG"
+     }
+  ],
+  "authentication": ["#controller", "#delegate"],
+  "assertionMethod": ["#controller", "#delegate"], 
+  "service": [
+    {
+      "id": "#kataru",
+      "type": "kataru",
+      "serviceEndpoint": "https://kataru.io/content/mizuki"
+    }
+  ],
+  "proof": {
+    "type": "Secp256k1",
+    "creator": "did:key:3qrgME9eV7brjYsx3Ebbp9hubiQna1wcD1FdzuG4P1V6xmZwSdLXzCG#key-1",
+    "signatureValue": "0000ac12ba13267890abcdc0000ac12ba13267890abcdc0000ac12ba13267890abcdc0000ac12ba13267890abcdc0000ac12ba13267890abcdc"
+  }
+}
