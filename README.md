@@ -16,6 +16,12 @@ In addition, we aim to increase the number of users by extending the authenticat
 ## Status Of this document
 This is a draft document
 
+## Components
+
+### VerifiableDataRegistry   
+Currently, there are no specific provisions for where DID Documents should be stored.  
+Therefore, we recommend that you choose a highly available storage location, such as an Instance or IPFS.   
+
 ## Syntax and Interpretation
 
 ```
