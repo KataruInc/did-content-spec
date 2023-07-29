@@ -1,6 +1,10 @@
 
 ## Introduction
-`did:content` is identifies content such as images, video, and music. The goal is to be able to comprehensively decentralized manage content and rights
+`did:content` is identifies content such as images, video, and music. The goal is to be able to comprehensively decentralized manage content and rights  
+
+<img alt="overview" width="400" src="https://github.com/KataruInc/did-content-spec/assets/6281583/10c5b9f7-ea15-4b16-8839-4d1c5124b126" />  
+
+Overview of `did:content` 
 
 ## Motivation
 Recently, a wide variety of content uploaded on the Internet.　　 
