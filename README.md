@@ -2,7 +2,7 @@
 ## Introduction
 `did:content` is identifies content such as images, video, and music. The goal is to be able to comprehensively decentralized manage content and rights  
 
-<img alt="overview" width="400" src="https://github.com/KataruInc/did-content-spec/assets/6281583/10c5b9f7-ea15-4b16-8839-4d1c5124b126" />  
+<img alt="overview" width="400" src="https://github.com/KataruInc/did-content-spec/assets/6281583/5390974d-c45b-4abc-91d8-a8227d865965" />  
 
 Overview of `did:content` 
 
@@ -90,21 +90,22 @@ Its corresponding DID document is as follows:
 
 ### Create　(Register)
 Creating DID and DID Document for Holders is done through the following steps:  
-<img width="769" alt="create" src="https://github.com/KataruInc/did-content-spec/assets/6281583/11394201-85a8-4167-b2d6-f50b07d51cb1">  
+<img width="769" alt="create" src="https://github.com/KataruInc/did-content-spec/assets/6281583/0eae65be-9fe7-4abb-bc86-62550a5b5ccb">  
 The DID Document does not have a concrete property for content, and the DID and Content must be resolved on the External Service side.  
 The DID Document contains information about the controllers who can control the content and the users who can view it.  
 Note: [key generate code](https://github.com/KataruInc/did-content-spec/blob/main/app/id_gen.py)
 
 ### Resolve (Read)
-Creating DID and DID Document for Holders is done through the following steps:   
-<img width="960" alt="read" src="https://github.com/KataruInc/did-content-spec/assets/6281583/13936600-4a6a-4d20-9df1-c10b1cd4effd">  
+<img width="780" alt="read" src="https://github.com/KataruInc/did-content-spec/assets/6281583/efdea224-8fc8-44df-9272-e285804a76a8">
+
+
 Firstly, access the DID resolver, obtain a list of services in DID Document, access the external service that has the content, and obtain the contents.   
 The external service side checks the authorization based on the controller information in the DID document and executes the request.    
 (The Client may access the external service directly.)    
 The service determines authorization based on the DID Document.    
 
 ### Update (Replace)
-<img width="844" alt="update" src="https://github.com/KataruInc/did-content-spec/assets/6281583/b6a62472-5e28-464e-ae0d-5d9e79d6e63e">     
+<img width="780" alt="update" src="https://github.com/KataruInc/did-content-spec/assets/6281583/65b7b00f-dc8f-47cc-a7d9-ed986cdf0989">
 
 I expect updation is mainly used when   
 
@@ -113,7 +114,7 @@ I expect updation is mainly used when
 - When updating the Content delivery service    
   
 ### Deactive (Delete)
-<img width="831" alt="delete" src="https://github.com/KataruInc/did-content-spec/assets/6281583/5ff771bb-de04-4782-868e-c1b672ef38c6">　　　　　
+<img width="780" alt="delete" src="https://github.com/KataruInc/did-content-spec/assets/6281583/c14fae9c-bb0a-4a69-b661-52f23f807e88">
 
 Delete is only for deleting DID documents,　    
 Deletion of the content itself is optional.    
