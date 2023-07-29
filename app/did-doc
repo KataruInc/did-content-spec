@@ -9,7 +9,6 @@
     "did:content:03Z5hdN7vxXyp5YW4WGqMYowMAB3SLG6tN2UjWb2DfAmkTHC1WYDfnjB#author",
     "did:content:03Z5hdN7vxXyp5YW4WGqMYowMAB3SLG6tN2UjWb2DfAmkTHC1WYDfnjB#rights-holder"
   ],
-  "updation":["#keys-1", "#keys-2"],
   "verificationMethod": [
      {
         "id": "did:key:3TL4YbgfwnJmJhyxKKDRpA81vB1QkWvvWRMioKQb6yv9HYwsZCpnVWB#controller",
@@ -22,6 +21,7 @@
         "controller": "did:key:3qrgME9eV7brjYsx3Ebbp9hubiQna1wcD1FdzuG4P1V6xmZwSdLXzCG"
      }
   ],
+  "updation":["#controller", "#delegate"],
   "authentication": ["#controller", "#delegate"],
   "assertionMethod": ["#controller", "#delegate"], 
   "service": [
@@ -34,6 +34,6 @@
   "proof": {
     "type": "Secp256k1",
     "creator": "did:key:3qrgME9eV7brjYsx3Ebbp9hubiQna1wcD1FdzuG4P1V6xmZwSdLXzCG#key-1",
-    "signatureValue": "0000ac12ba13267890abcdc0000ac12ba13267890abcdc0000ac12ba13267890abcdc0000ac12ba13267890abcdc0000ac12ba13267890abcdc"
+    "signatureValue": "0000fb29b515146a1633833c41c87fc902e3815394bf31d3d779172124fe653f100c07d99c1f485d34607765ec53c6c889b8c18dc477fa04e"
   }
 }
