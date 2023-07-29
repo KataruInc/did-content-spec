@@ -94,11 +94,20 @@ The external service side checks the authorization based on the controller infor
 The service determines authorization based on the DID Document.    
 
 ### Update (Replace)
-<img width="844" alt="update" src="https://github.com/KataruInc/did-content-spec/assets/6281583/b6a62472-5e28-464e-ae0d-5d9e79d6e63e">
+<img width="844" alt="update" src="https://github.com/KataruInc/did-content-spec/assets/6281583/b6a62472-5e28-464e-ae0d-5d9e79d6e63e">    
+I expect updation is mainly used when   
 
+- When updating a did document
+- When changing the URL of Content　　
+- When updating the Content delivery service    
+  
 ### Deactive (Delete)
-<img width="831" alt="delete" src="https://github.com/KataruInc/did-content-spec/assets/6281583/5ff771bb-de04-4782-868e-c1b672ef38c6">
+<img width="831" alt="delete" src="https://github.com/KataruInc/did-content-spec/assets/6281583/5ff771bb-de04-4782-868e-c1b672ef38c6">　　　　　
 
+Delete is only for deleting DID documents,　    
+Deletion of the content itself is optional.    
+In other words, it only disables content resolution by DID.　    
+　　
 ## Security and Privacy Considerations
 
 ### Security
@@ -115,4 +124,4 @@ DID content Resolver / DID document must not have Personally Identifiable Inform
 2023/07/28: release alpha version
 
 ## Copyright
-MizukiSonoko
+@MizukiSonoko
