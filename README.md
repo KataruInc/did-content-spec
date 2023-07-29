@@ -7,7 +7,7 @@
 Overview of `did:content` 
 
 ## Motivation
-Recently, a wide variety of content uploaded on the Internet.　　 
+Recently, a wide variety of content uploaded on the Internet.　　   
 However, content identifiers depend on storage like a S3 / YouTube. As a result, if storage downs, access becomes difficult.
 Naturally, there are solutions such as Contents Delivery Network(CDN) like Cloudflare / Fastly, but it must be said that they are still managed in a centralized.  
 In this method, the goal is to support content resolution and improve availability by defining IDs that can resolve various types of storage, etc., centered on content.  
@@ -104,7 +104,8 @@ The external service side checks the authorization based on the controller infor
 The service determines authorization based on the DID Document.    
 
 ### Update (Replace)
-<img width="844" alt="update" src="https://github.com/KataruInc/did-content-spec/assets/6281583/b6a62472-5e28-464e-ae0d-5d9e79d6e63e">    
+<img width="844" alt="update" src="https://github.com/KataruInc/did-content-spec/assets/6281583/b6a62472-5e28-464e-ae0d-5d9e79d6e63e">     
+
 I expect updation is mainly used when   
 
 - When updating a did document
