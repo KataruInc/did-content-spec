@@ -123,14 +123,14 @@ In other words, it only disables content resolution by DID.　
 ## Security and Privacy Considerations
 
 ### Security
-The following security considerations should be considered for the content DID method:
-DID Resolver will check for authority with the sIgnature of the Controller recorded in the correct DID document. It is cryptographically more secure than existing authenticate methods (like password).
-In addition, the `did:content` DID Resolver is OSS and can be built by anyone, allowing service providers to manage server root privileges.
-
+The following security considerations should be considered for the content DID method:  
+DID Resolver will check for authority with the sIgnature of the Controller recorded in the correct DID document. It is cryptographically more secure than existing authenticate methods (like password).   
+In addition, the `did:content` DID Resolver is OSS and can be built by anyone, allowing service providers to manage server root privileges.    
+  
 ### Privacy Considerations
-The following privacy considerations should be considered for the content DID method:
-In general, DID Docuement is for identifying an entity like content
-DID content Resolver / DID document must not have Personally Identifiable Information (PII).
+The following privacy considerations should be considered for the content DID method:  
+In general, DID Docuement is for identifying an entity like content  
+DID content Resolver / DID document must not have Personally Identifiable Information (PII).  
 
 ## Update History
 2023/07/28: release alpha version
