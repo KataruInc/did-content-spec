@@ -86,17 +86,23 @@ Its corresponding DID document is as follows:
 - `#author` if servive receive `#author` fragment, they should return authors of content
 - `#rights-holder` if servive receive `#rights-holder` fragment, they should return rights-holder of content
 
+## DID Resolver / Verifiable Data Registrye 
+The DID Resolver creates a DID Document from arguments and generates a DID to be associated.  
+In addition, it has a database that associates DIDs with DID Document storage locations.  
+Verifiable Data Registry assumes use of common storage such as IPFS / S3.
+
 ## DID Operations
 
 ### Create　(Register)
 Creating DID and DID Document for Holders is done through the following steps:  
-<img width="769" alt="create" src="https://github.com/KataruInc/did-content-spec/assets/6281583/0eae65be-9fe7-4abb-bc86-62550a5b5ccb">  
+<img width="780" alt="image" src="https://github.com/KataruInc/did-content-spec/assets/6281583/3c1dfc96-711e-4b57-b6f4-cb4e33d4ba76">　　　
+
 The DID Document does not have a concrete property for content, and the DID and Content must be resolved on the External Service side.  
 The DID Document contains information about the controllers who can control the content and the users who can view it.  
 Note: [key generate code](https://github.com/KataruInc/did-content-spec/blob/main/app/id_gen.py)
 
 ### Resolve (Read)
-<img width="780" alt="read" src="https://github.com/KataruInc/did-content-spec/assets/6281583/efdea224-8fc8-44df-9272-e285804a76a8">
+<img width="780" alt="image" src="https://github.com/KataruInc/did-content-spec/assets/6281583/4e3c4dfb-bbd0-4c02-b5cd-9b3a6739b728">
 
 
 Firstly, access the DID resolver, obtain a list of services in DID Document, access the external service that has the content, and obtain the contents.   
@@ -105,7 +111,7 @@ The external service side checks the authorization based on the controller infor
 The service determines authorization based on the DID Document.    
 
 ### Update (Replace)
-<img width="780" alt="update" src="https://github.com/KataruInc/did-content-spec/assets/6281583/65b7b00f-dc8f-47cc-a7d9-ed986cdf0989">
+<img width="780" alt="image" src="https://github.com/KataruInc/did-content-spec/assets/6281583/c0cbc0a1-b139-484d-b8ef-5d8a8561b6ce">
 
 I expect updation is mainly used when   
 
@@ -114,7 +120,8 @@ I expect updation is mainly used when
 - When updating the Content delivery service    
   
 ### Deactive (Delete)
-<img width="780" alt="delete" src="https://github.com/KataruInc/did-content-spec/assets/6281583/c14fae9c-bb0a-4a69-b661-52f23f807e88">
+<img width="780" alt="image" src="https://github.com/KataruInc/did-content-spec/assets/6281583/68105ca5-4520-4468-8043-9aa8fe0aaa25">
+
 
 Delete is only for deleting DID documents,　    
 Deletion of the content itself is optional.    
