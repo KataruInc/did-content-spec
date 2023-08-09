@@ -86,10 +86,29 @@ Its corresponding DID document is as follows:
 - `#author` if servive receive `#author` fragment, they should return authors of content
 - `#rights-holder` if servive receive `#rights-holder` fragment, they should return rights-holder of content
 
-## DID Resolver / Verifiable Data Registrye 
-The DID Resolver creates a DID Document from arguments and generates a DID to be associated.  
-In addition, it has a database that associates DIDs with DID Document storage locations.  
-Verifiable Data Registry assumes use of common storage such as IPFS / S3.
+## DID Resolver / Verifiable Data Registry　　
+The DID Resolver creates a DID Document from arguments and generates a DID to be associated.  　　  
+In addition, it has a database that associates DIDs with DID Document storage locations. 　 　　  
+Verifiable Data Registry assumes use of common storage such as IPFS / S3.　　　  
+
+### DID Resolver Functions
+- GET `/resolve?did=?`
+  1) Get location of did document from Database.
+  2) Fetch the did document from Verifiable Data Registry.
+  3) Return did document
+- POST `/create?contentType=&contentUrl=&signature=` Store 
+  1) Generate a did document associated with arguments
+  2) Generate new did
+  3) Store a did document to Verifiable Data Registry like S3 / IPFS
+  4) Insert a recode contains location and did.
+  5) Return generated DID
+- POST `/update?did=&contentType=&contentUrl=&signature=`
+  1) Fetch the  did document from Verifiable Data Registry.
+  2) Update a did document 
+  3) Store new did document to Verifiable Data Registry like S3 / IPFS
+  4) Update a recode
+- POST `/delete?did=`
+  1) Delete a recode
 
 ## DID Operations
 
@@ -104,26 +123,27 @@ Note: [key generate code](https://github.com/KataruInc/did-content-spec/blob/mai
 ### Resolve (Read)
 <img width="780" alt="image" src="https://github.com/KataruInc/did-content-spec/assets/6281583/4e3c4dfb-bbd0-4c02-b5cd-9b3a6739b728">
 
-
 Firstly, access the DID resolver, obtain a list of services in DID Document, access the external service that has the content, and obtain the contents.   
 The external service side checks the authorization based on the controller information in the DID document and executes the request.    
 (The Client may access the external service directly.)    
 The service determines authorization based on the DID Document.    
 
 ### Update (Replace)
-<img width="780" alt="image" src="https://github.com/KataruInc/did-content-spec/assets/6281583/c0cbc0a1-b139-484d-b8ef-5d8a8561b6ce">
+<img width="780" alt="image" src="https://github.com/KataruInc/did-content-spec/assets/6281583/c0cbc0a1-b139-484d-b8ef-5d8a8561b6ce">　　
 
 I expect updation is mainly used when   
+　　
+- When updating a did document　　
+- When changing the URL of Content　　　　
+- When updating the Content delivery service    　
+  　　
 
-- When updating a did document
-- When changing the URL of Content　　
-- When updating the Content delivery service    
-  
 ### Deactive (Delete)
-<img width="780" alt="image" src="https://github.com/KataruInc/did-content-spec/assets/6281583/68105ca5-4520-4468-8043-9aa8fe0aaa25">
-
+<img width="780" alt="image" src="https://github.com/KataruInc/did-content-spec/assets/6281583/68105ca5-4520-4468-8043-9aa8fe0aaa25">　　　
 
 Delete is only for deleting DID documents,　    
+If the VDR was S3, delete the Document in addition to the record.　　
+If the VDR is IPFS, delete the record.　　
 Deletion of the content itself is optional.    
 In other words, it only disables content resolution by DID.　    
 　　
@@ -131,7 +151,7 @@ In other words, it only disables content resolution by DID.　
 
 ### Security
 The following security considerations should be considered for the content DID method:  
-DID Resolver will check for authority with the sIgnature of the Controller recorded in the correct DID document. It is cryptographically more secure than existing authenticate methods (like password).   
+DID Resolver will check for authority with the signature of the Controller recorded in the correct DID document. It is cryptographically more secure than existing authenticate methods (like password).   
 In addition, the `did:content` DID Resolver is OSS and can be built by anyone, allowing service providers to manage server root privileges.    
   
 ### Privacy Considerations
