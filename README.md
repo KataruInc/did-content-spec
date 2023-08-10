@@ -16,12 +16,6 @@ In addition, we aim to increase the number of users by extending the authenticat
 ## Status Of this document
 This is a draft document
 
-## Components
-
-### VerifiableDataRegistry   
-Currently, there are no specific provisions for where DID Documents should be stored.  
-Therefore, we recommend that you choose a highly available storage location, such as an Instance or IPFS.   
-
 ## Syntax and Interpretation
 
 ```
@@ -89,7 +83,11 @@ Its corresponding DID document is as follows:
 ## DID Resolver / Verifiable Data Registry　　
 The DID Resolver creates a DID Document from arguments and generates a DID to be associated.  　　  
 In addition, it has a database that associates DIDs with DID Document storage locations. 　 　　  
-Verifiable Data Registry assumes use of common storage such as IPFS / S3.　　　  
+
+### VerifiableDataRegistry   
+Currently, there are no specific provisions for where DID Documents should be stored.    
+but Verifiable Data Registry assumes use of common storage such as IPFS / S3.　　　  
+Therefore, we recommend that you choose a highly available storage location, such as an Instance or IPFS.   
 
 ### DID Resolver Functions
 - GET `/resolve?did=?`
