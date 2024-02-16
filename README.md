@@ -63,7 +63,13 @@ Its corresponding DID document is as follows:
   ],
   "updation":["#controller", "#delegate"],
   "authentication": ["#controller", "#delegate"],
-  "assertionMethod": ["#controller", "#delegate"], 
+  "assertionMethod": ["#controller", "#delegate"],
+  "royaltyRecipients": [
+     {
+        "recipient": "mizukis@getalby.com",
+        "ratio": 80
+     }
+  ],
   "service": [
     {
       "id": "#kataru",
@@ -82,6 +88,8 @@ Its corresponding DID document is as follows:
 ### Fragments
 - `#author` if servive receive `#author` fragment, they should return authors of content
 - `#rights-holder` if servive receive `#rights-holder` fragment, they should return rights-holder of content
+
+### Royalty Recipients
 
 ## DID Resolver / Verifiable Data Registry　　
 The DID Resolver creates a DID Document from arguments and generates a DID to be associated.  　　  
