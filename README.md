@@ -1,6 +1,7 @@
 
 This methods `did:content` has been registered with w3c did-methods.  
-https://w3c.github.io/did-spec-registries/#did-methods
+[https://w3c.github.io/did-spec-registries/#did-methods
+](https://www.w3.org/TR/did-extensions-methods/)
 
 ## Introduction
 `did:content` is identifies content such as images, video, and music. The goal is to be able to comprehensively decentralized manage content and rights  
