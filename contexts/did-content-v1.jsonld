@@ -1,0 +1,96 @@
+{
+  "@context": {
+    "@protected": true,
+    "id": "@id",
+    "type": "@type",
+    "dc": "https://did.kataru.io/did-content/v1#",
+    "sec": "https://w3id.org/security#",
+
+    "content": { "@id": "dc:content", "@type": "@id", "@context": {
+      "@protected": true,
+      "mediaType": "dc:mediaType",
+      "byteLength": "dc:byteLength",
+      "hardBindings": { "@id": "dc:hardBinding", "@container": "@set", "@context": {
+        "@protected": true,
+        "digestMultibase": { "@id": "sec:digestMultibase", "@type": "sec:multibase" }
+      }},
+      "softBindings": { "@id": "dc:softBinding", "@container": "@set", "@context": {
+        "@protected": true,
+        "alg": "dc:softBindingAlgorithm",
+        "value": "dc:softBindingValue"
+      }},
+      "locations": { "@id": "dc:location", "@type": "@id", "@container": "@list" }
+    }},
+
+    "parties": { "@id": "dc:party", "@container": "@set", "@context": {
+      "@protected": true,
+      "party": { "@id": "dc:partyIdentifier", "@type": "@id" },
+      "role": { "@id": "dc:role", "@type": "@vocab", "@context": {
+        "@protected": true,
+        "creator": "dc:creator",
+        "contributor": "dc:contributor",
+        "editor": "dc:editor",
+        "producer": "dc:producer",
+        "publisher": "dc:publisher",
+        "sponsor": "dc:sponsor",
+        "translator": "dc:translator",
+        "rightsHolder": "dc:rightsHolder",
+        "licensor": "dc:licensor",
+        "generator": "dc:generator"
+      }}
+    }},
+
+    "license": { "@id": "dc:license", "@container": "@set", "@context": {
+      "@protected": true,
+      "RSLLicense": "dc:RSLLicense",
+      "CreativeCommons": "dc:CreativeCommonsLicense",
+      "SPDX": "dc:SPDXLicense",
+      "PIL": "dc:ProgrammableIPLicense",
+      "Custom": "dc:CustomLicense",
+      "permits": { "@id": "dc:permits", "@context": {
+        "@protected": true,
+        "usage": { "@id": "dc:usage", "@container": "@set" },
+        "user": { "@id": "dc:user", "@container": "@set" },
+        "geo": { "@id": "dc:geo", "@container": "@set" }
+      }},
+      "prohibits": { "@id": "dc:prohibits", "@context": {
+        "@protected": true,
+        "usage": { "@id": "dc:usage", "@container": "@set" },
+        "user": { "@id": "dc:user", "@container": "@set" },
+        "geo": { "@id": "dc:geo", "@container": "@set" }
+      }},
+      "payment": { "@id": "dc:payment", "@context": {
+        "@protected": true,
+        "type": "dc:paymentType",
+        "terms": { "@id": "dc:terms", "@type": "@id" }
+      }},
+      "terms": { "@id": "dc:terms", "@type": "@id" }
+    }},
+
+    "royalty": { "@id": "dc:royalty", "@context": {
+      "@protected": true,
+      "recipients": { "@id": "dc:recipient", "@container": "@set", "@context": {
+        "@protected": true,
+        "party": { "@id": "dc:partyReference", "@type": "@id" },
+        "shareBasisPoints": "dc:shareBasisPoints",
+        "payTo": { "@id": "dc:payTo", "@type": "@id" }
+      }}
+    }},
+
+    "provenance": { "@id": "dc:provenance", "@container": "@set", "@context": {
+      "@protected": true,
+      "C2PAManifest": "dc:C2PAManifest",
+      "CAWGIdentityAssertion": "dc:CAWGIdentityAssertion",
+      "VerifiableCredential": "https://www.w3.org/2018/credentials#VerifiableCredential",
+      "OnChainRegistration": "dc:OnChainRegistration",
+      "digestMultibase": { "@id": "sec:digestMultibase", "@type": "sec:multibase" },
+      "url": { "@id": "dc:url", "@type": "@id" }
+    }},
+    "derivedFrom": { "@id": "dc:derivedFrom", "@type": "@id", "@container": "@set" },
+
+    "ContentDelivery": "dc:ContentDelivery",
+    "LicenseNegotiation": "dc:LicenseNegotiation",
+    "ProvenanceLookup": "dc:ProvenanceLookup",
+    "DIDContentLog": "dc:DIDContentLog"
+  }
+}

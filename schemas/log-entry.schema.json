@@ -1,0 +1,187 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://did.kataru.io/did-content/schemas/log-entry.schema.json",
+  "title": "did:content DID Log entry (v0.2)",
+  "type": "object",
+  "required": ["versionId", "versionTime", "parameters", "state", "proof"],
+  "additionalProperties": false,
+  "properties": {
+    "versionId": { "type": "string", "pattern": "^[1-9][0-9]*-z[1-9A-HJ-NP-Za-km-z]+$" },
+    "versionTime": { "type": "string", "format": "date-time" },
+    "parameters": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "method": { "type": "string", "const": "did:content:0.2" },
+        "scid": { "$ref": "#/$defs/multibase" },
+        "updateKeys": { "type": "array", "items": { "$ref": "#/$defs/multikey" } },
+        "nextKeyHashes": { "type": "array", "items": { "$ref": "#/$defs/multibase" } },
+        "witness": {
+          "type": "object",
+          "required": ["threshold", "witnesses"],
+          "properties": {
+            "threshold": { "type": "integer", "minimum": 0 },
+            "witnesses": { "type": "array", "items": { "type": "object", "required": ["id"], "properties": { "id": { "type": "string", "pattern": "^did:" } } } }
+          }
+        },
+        "watchers": { "type": "array", "items": { "type": "string", "format": "uri" } },
+        "registries": { "type": "array", "items": { "type": "string", "format": "uri" } },
+        "ttl": { "type": "integer", "minimum": 0, "maximum": 2147483647 },
+        "deactivated": { "type": "boolean" }
+      }
+    },
+    "state": { "$ref": "#/$defs/didDocument" },
+    "proof": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/proof" } }
+  },
+  "$defs": {
+    "multibase": { "type": "string", "pattern": "^z[1-9A-HJ-NP-Za-km-z]+$" },
+    "multikey": { "type": "string", "pattern": "^z[1-9A-HJ-NP-Za-km-z]+$" },
+    "did": { "type": "string", "pattern": "^did:[a-z0-9]+:" },
+    "didContent": { "type": "string", "pattern": "^did:content:z[1-9A-HJ-NP-Za-km-z]+$" },
+    "fragmentRef": { "type": "string", "pattern": "^did:content:z[1-9A-HJ-NP-Za-km-z]+#[A-Za-z0-9._~-]+$" },
+    "proof": {
+      "type": "object",
+      "required": ["type", "cryptosuite", "verificationMethod", "created", "proofPurpose", "proofValue"],
+      "properties": {
+        "type": { "const": "DataIntegrityProof" },
+        "cryptosuite": { "enum": ["eddsa-jcs-2022", "ecdsa-jcs-2019"] },
+        "verificationMethod": { "type": "string", "pattern": "^did:key:z[1-9A-HJ-NP-Za-km-z]+#z[1-9A-HJ-NP-Za-km-z]+$" },
+        "created": { "type": "string", "format": "date-time" },
+        "proofPurpose": { "const": "assertionMethod" },
+        "proofValue": { "$ref": "#/$defs/multibase" }
+      }
+    },
+    "didDocument": {
+      "type": "object",
+      "required": ["id", "content"],
+      "properties": {
+        "@context": { "type": "array", "items": { "type": "string" } },
+        "id": { "$ref": "#/$defs/didContent" },
+        "controller": { "type": "array", "items": { "$ref": "#/$defs/did" } },
+        "alsoKnownAs": { "type": "array", "items": { "type": "string" } },
+        "verificationMethod": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["id", "type", "controller"],
+            "properties": {
+              "id": { "$ref": "#/$defs/fragmentRef" },
+              "type": { "enum": ["Multikey", "JsonWebKey"] },
+              "controller": { "$ref": "#/$defs/did" },
+              "publicKeyMultibase": { "$ref": "#/$defs/multikey" },
+              "publicKeyJwk": { "type": "object" }
+            }
+          }
+        },
+        "authentication": { "$ref": "#/$defs/relationship" },
+        "assertionMethod": { "$ref": "#/$defs/relationship" },
+        "capabilityInvocation": { "$ref": "#/$defs/relationship" },
+        "capabilityDelegation": { "$ref": "#/$defs/relationship" },
+        "keyAgreement": { "$ref": "#/$defs/relationship" },
+        "content": {
+          "type": "object",
+          "required": ["mediaType", "hardBindings"],
+          "properties": {
+            "mediaType": { "type": "string", "pattern": "^[a-z0-9!#$&^_.+-]+/[a-zA-Z0-9!#$&^_.+-]+" },
+            "byteLength": { "type": "integer", "minimum": 0 },
+            "hardBindings": {
+              "type": "array", "minItems": 1,
+              "items": { "type": "object", "required": ["digestMultibase"], "properties": { "digestMultibase": { "$ref": "#/$defs/multibase" } } }
+            },
+            "softBindings": {
+              "type": "array",
+              "items": { "type": "object", "required": ["alg", "value"], "properties": { "alg": { "type": "string" }, "value": { "type": "string" } } }
+            },
+            "locations": { "type": "array", "items": { "type": "string", "format": "uri" } }
+          }
+        },
+        "parties": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["id", "role", "party"],
+            "properties": {
+              "id": { "$ref": "#/$defs/fragmentRef" },
+              "role": { "enum": ["creator", "contributor", "editor", "producer", "publisher", "sponsor", "translator", "rightsHolder", "licensor", "generator"] },
+              "party": { "$ref": "#/$defs/did" }
+            }
+          }
+        },
+        "license": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["id", "type"],
+            "properties": {
+              "id": { "$ref": "#/$defs/fragmentRef" },
+              "type": { "enum": ["RSLLicense", "CreativeCommons", "SPDX", "PIL", "Custom"] },
+              "permits": { "$ref": "#/$defs/usageSet" },
+              "prohibits": { "$ref": "#/$defs/usageSet" },
+              "payment": {
+                "type": "object",
+                "required": ["type"],
+                "properties": {
+                  "type": { "enum": ["free", "purchase", "subscription", "training", "crawl", "use", "contribution", "attribution"] },
+                  "terms": { "type": "string", "format": "uri" }
+                }
+              },
+              "terms": { "type": "string", "format": "uri" }
+            }
+          }
+        },
+        "royalty": {
+          "type": "object",
+          "required": ["recipients"],
+          "properties": {
+            "recipients": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": ["party", "shareBasisPoints", "payTo"],
+                "properties": {
+                  "party": { "$ref": "#/$defs/fragmentRef" },
+                  "shareBasisPoints": { "type": "integer", "minimum": 0, "maximum": 10000 },
+                  "payTo": { "type": "string", "pattern": "^(did:pkh:|payto:|https://|lightning:|bitcoin:)" }
+                }
+              }
+            }
+          }
+        },
+        "provenance": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["type"],
+            "properties": {
+              "type": { "enum": ["C2PAManifest", "CAWGIdentityAssertion", "VerifiableCredential", "OnChainRegistration"] },
+              "digestMultibase": { "$ref": "#/$defs/multibase" },
+              "url": { "type": "string", "format": "uri" }
+            }
+          }
+        },
+        "derivedFrom": { "type": "array", "items": { "$ref": "#/$defs/didContent" } },
+        "service": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["id", "type", "serviceEndpoint"],
+            "properties": {
+              "id": { "$ref": "#/$defs/fragmentRef" },
+              "type": { "type": "string" },
+              "serviceEndpoint": { "type": ["string", "array", "object"] }
+            }
+          }
+        }
+      }
+    },
+    "usageSet": {
+      "type": "object",
+      "properties": {
+        "usage": { "type": "array", "items": { "enum": ["all", "ai-all", "ai-train", "ai-input", "ai-index", "search"] } },
+        "user": { "type": "array", "items": { "enum": ["commercial", "non-commercial", "education", "government", "personal"] } },
+        "geo": { "type": "array", "items": { "type": "string", "pattern": "^[A-Z]{2}$" } }
+      }
+    },
+    "relationship": { "type": "array", "items": { "oneOf": [ { "$ref": "#/$defs/fragmentRef" }, { "type": "object" } ] } }
+  }
+}
