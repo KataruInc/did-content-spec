@@ -1,6 +1,10 @@
 #!/usr/bin/env python3
 
-# Copyright (C) 2023 MizukiSonoko All Rights Rserved.
+# LEGACY (did:content v0.1, 2023). Kept only so that v0.1 identifiers can be
+# recognised. New identifiers MUST be generated with content_did.py (v0.2).
+# Note: this script base58-encodes the *hex string* of the RIPEMD-160 digest,
+# which is why v0.1 identifiers are 55 characters long.
+# Copyright (C) 2023 MizukiSonoko All Rights Reserved.
 
 import base58
 import hashlib

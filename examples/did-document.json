@@ -1,0 +1,111 @@
+{
+  "@context": [
+    "https://www.w3.org/ns/did/v1.1",
+    "https://did.kataru.io/did-content/v1"
+  ],
+  "id": "did:content:zQmbnKX58u9eGUuDCDjKxCaG48Xr375dvf81vdGZqz31ze4",
+  "controller": [
+    "did:key:z6MkjchhfUsD6mmvni8mCdXHw216Xrm9bQe2mBH1P5RDjVJG"
+  ],
+  "verificationMethod": [
+    {
+      "id": "did:content:zQmbnKX58u9eGUuDCDjKxCaG48Xr375dvf81vdGZqz31ze4#key-1",
+      "type": "Multikey",
+      "controller": "did:content:zQmbnKX58u9eGUuDCDjKxCaG48Xr375dvf81vdGZqz31ze4",
+      "publicKeyMultibase": "z6MkjchhfUsD6mmvni8mCdXHw216Xrm9bQe2mBH1P5RDjVJG"
+    }
+  ],
+  "assertionMethod": [
+    "did:content:zQmbnKX58u9eGUuDCDjKxCaG48Xr375dvf81vdGZqz31ze4#key-1"
+  ],
+  "capabilityInvocation": [
+    "did:content:zQmbnKX58u9eGUuDCDjKxCaG48Xr375dvf81vdGZqz31ze4#key-1"
+  ],
+  "content": {
+    "mediaType": "image/png",
+    "byteLength": 165,
+    "hardBindings": [
+      {
+        "digestMultibase": "zQmQoJLz2eqTpNQ7qjqTQ8bJNd24uUaH3YnHXRVmyjn4S7x"
+      }
+    ],
+    "locations": [
+      "ipfs://bafybeigdyrzt5sfp7udm7hu76uh7y26nf3efuylqabf3oclgtqy55fbzdi",
+      "https://cdn.example.com/sample.png"
+    ]
+  },
+  "parties": [
+    {
+      "id": "did:content:zQmbnKX58u9eGUuDCDjKxCaG48Xr375dvf81vdGZqz31ze4#party-1",
+      "role": "creator",
+      "party": "did:key:z6MkjchhfUsD6mmvni8mCdXHw216Xrm9bQe2mBH1P5RDjVJG"
+    },
+    {
+      "id": "did:content:zQmbnKX58u9eGUuDCDjKxCaG48Xr375dvf81vdGZqz31ze4#party-2",
+      "role": "rightsHolder",
+      "party": "did:web:label.example.com"
+    }
+  ],
+  "license": [
+    {
+      "id": "did:content:zQmbnKX58u9eGUuDCDjKxCaG48Xr375dvf81vdGZqz31ze4#license-1",
+      "type": "RSLLicense",
+      "permits": {
+        "usage": [
+          "search"
+        ],
+        "user": [
+          "commercial",
+          "non-commercial"
+        ]
+      },
+      "prohibits": {
+        "usage": [
+          "ai-train",
+          "ai-input"
+        ]
+      },
+      "payment": {
+        "type": "attribution"
+      },
+      "terms": "https://label.example.com/licenses/standard"
+    },
+    {
+      "id": "did:content:zQmbnKX58u9eGUuDCDjKxCaG48Xr375dvf81vdGZqz31ze4#license-2",
+      "type": "RSLLicense",
+      "permits": {
+        "usage": [
+          "ai-train"
+        ],
+        "user": [
+          "commercial"
+        ]
+      },
+      "payment": {
+        "type": "training",
+        "terms": "https://label.example.com/licenses/ai-training"
+      }
+    }
+  ],
+  "royalty": {
+    "recipients": [
+      {
+        "party": "did:content:zQmbnKX58u9eGUuDCDjKxCaG48Xr375dvf81vdGZqz31ze4#party-1",
+        "shareBasisPoints": 8000,
+        "payTo": "did:pkh:eip155:1:0x0000000000000000000000000000000000000001"
+      },
+      {
+        "party": "did:content:zQmbnKX58u9eGUuDCDjKxCaG48Xr375dvf81vdGZqz31ze4#party-2",
+        "shareBasisPoints": 2000,
+        "payTo": "payto:iban/DE75512108001245126199"
+      }
+    ]
+  },
+  "service": [
+    {
+      "id": "did:content:zQmbnKX58u9eGUuDCDjKxCaG48Xr375dvf81vdGZqz31ze4#delivery",
+      "type": "ContentDelivery",
+      "serviceEndpoint": "https://cdn.example.com/sample.png"
+    }
+  ]
+}
