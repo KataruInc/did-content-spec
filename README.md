@@ -605,7 +605,7 @@ Summary; details and mappings in [`docs/interoperability.md`](docs/interoperabil
 | **RSL 1.0 / Content Signals / TDMRep** | `license[]` reuses RSL usage, user and payment tokens so one declaration can be rendered as RSL XML, robots.txt Content-Signal lines or TDMRep headers. |
 | **Story / on-chain IP registries** | `alsoKnownAs` carries the IP Asset identifier; `license[].type: "PIL"` references PIL terms; `derivedFrom` mirrors the derivative graph; `payTo` uses `did:pkh`. |
 | **W3C VC 2.0** | A `did:content` DID is a valid `credentialSubject.id`; document keys (`assertionMethod`) can sign credentials about the content. |
-| **Universal Resolver / DID Resolution** | The HTTPS binding and result format are those of DID Resolution v0.3, so a driver is a thin wrapper around `verify_log`. |
+| **Universal Resolver / DID Resolution** | The HTTPS binding and result format are those of DID Resolution v0.3. The Universal Resolver driver ([KataruInc/content-did-driver](https://github.com/KataruInc/content-did-driver), image `kataru/content-did-driver`, linux/amd64 + arm64) is a stateless proxy to a registry. |
 | **Music / publishing identifiers** | ISRC, ISWC, ISBN, EIDR, DOI go in `alsoKnownAs` as URNs; they identify *works/recordings*, `did:content` identifies *this file*. |
 
 ---
