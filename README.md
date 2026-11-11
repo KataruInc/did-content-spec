@@ -178,7 +178,11 @@ contexts below. Producers SHOULD include:
 ```
 
 The canonical copy of the second context is
-[`contexts/did-content-v1.jsonld`](contexts/did-content-v1.jsonld).
+[`contexts/did-content-v1.jsonld`](contexts/did-content-v1.jsonld); it is published
+to `https://did.kataru.io/did-content/v1` with [`scripts/publish-context.sh`](scripts/publish-context.sh).
+Until that URL is live, implementations SHOULD load the context from this
+repository (e.g. via jsDelivr:
+`https://cdn.jsdelivr.net/gh/KataruInc/did-content-spec@main/contexts/did-content-v1.jsonld`).
 
 ### 4.1 Core properties
 
@@ -711,6 +715,7 @@ read-only for a deprecation period.
 
 ## Copyright
 
-© 2023–2026 Mizuki Sonoko / Kataru Inc. All rights reserved until a licence
-is chosen; the W3C Document License is recommended for the specification text
-and a permissive OSS licence for `app/`.
+© 2023–2026 Mizuki Sonoko / Kataru Inc. The specification text is available
+under the [W3C Document License](https://www.w3.org/copyright/document-license-2023/);
+the code in `app/` and the test vectors in `examples/` are released under the
+MIT License. See [`LICENSE.md`](LICENSE.md).

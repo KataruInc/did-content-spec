@@ -1,3 +1,4 @@
+# SPDX-License-Identifier: MIT
 """did:content DID Log: creation, verification and resolution.
 
 A DID Log is a JSON Lines file (``did.jsonl``). Each line is a *log entry*::

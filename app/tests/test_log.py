@@ -1,3 +1,4 @@
+# SPDX-License-Identifier: MIT
 """Tests for the did:content reference implementation (run: python3 -m unittest)."""
 
 from __future__ import annotations

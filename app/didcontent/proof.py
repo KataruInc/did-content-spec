@@ -1,3 +1,4 @@
+# SPDX-License-Identifier: MIT
 """Data Integrity proofs using the ``eddsa-jcs-2022`` cryptosuite.
 
 See W3C "Data Integrity EdDSA Cryptosuites v1.0" (Recommendation, 2025-05-15).

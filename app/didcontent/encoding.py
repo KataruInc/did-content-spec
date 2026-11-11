@@ -1,3 +1,4 @@
+# SPDX-License-Identifier: MIT
 """Encoding primitives: base58btc, multibase, multihash, Multikey and JCS.
 
 Only the subset needed by did:content is implemented:

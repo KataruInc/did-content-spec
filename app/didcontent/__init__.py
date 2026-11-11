@@ -1,3 +1,4 @@
+# SPDX-License-Identifier: MIT
 """Reference implementation of the did:content DID method (v0.2 draft).
 
 Pure-Python apart from `cryptography`, which is used for Ed25519 signatures.

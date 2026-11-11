@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# SPDX-License-Identifier: MIT
 """Regenerate the test vectors in ../examples (deterministic; keys are TEST ONLY)."""
 
 from __future__ import annotations

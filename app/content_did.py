@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# SPDX-License-Identifier: MIT
 """Command line reference tool for did:content (v0.2 draft).
 
 Examples::
