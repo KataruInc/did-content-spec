@@ -1,0 +1,24 @@
+{
+  "@context": {
+    "@protected": true,
+    "id": "@id",
+    "type": "@type",
+    "owner": {
+      "@id": "https://did.kataru.io/did/doc#owner",
+      "@type": "@id",
+      "@context": {
+        "@protected": true,
+        "id": "@id",
+        "type": "@type",
+        "name": {
+          "@id": "https://did.kataru.io/did/doc#owner-name",
+          "@type": "@id"
+        },
+        "role": {
+          "@id": "https://did.kataru.io/did/doc#owner-role",
+          "@type": "@id"
+        }
+      }
+    }
+  }
+}

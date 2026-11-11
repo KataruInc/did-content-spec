@@ -2,6 +2,11 @@
 
 ## 0.2 (draft) — 2026-11-11
 
+### Unreleased additions
+- Added the v0.1 JSON-LD context as `contexts/legacy-did-v1.jsonld` so registries can keep serving `/did/v1`.
+- Licences: W3C Document License for the text, MIT for `app/` and `examples/`.
+- The Go registry server and its AWS deployment moved to the separate `did-content-backend` repository.
+
 ### Identifier
 - **Breaking.** The method-specific identifier is now a Self-Certifying Identifier
   (multibase base58btc of a sha2-256 multihash of the canonicalised genesis log

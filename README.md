@@ -10,6 +10,7 @@
 | Method name | `content` |
 | Status | Draft. Breaking changes from v0.1, see [Migration](#13-migration-from-v01). |
 | Reference implementation | [`app/`](app/) (Python, `cryptography` only) |
+| Public registry | `https://did.kataru.io` (resolver, log hosting, reverse lookup; see §7) |
 | Test vectors | [`examples/`](examples/) |
 | JSON-LD context | [`contexts/did-content-v1.jsonld`](contexts/did-content-v1.jsonld) |
 | JSON Schema (log entry) | [`schemas/log-entry.schema.json`](schemas/log-entry.schema.json) |
@@ -178,9 +179,10 @@ contexts below. Producers SHOULD include:
 ```
 
 The canonical copy of the second context is
-[`contexts/did-content-v1.jsonld`](contexts/did-content-v1.jsonld); it is published
-to `https://did.kataru.io/did-content/v1` with [`scripts/publish-context.sh`](scripts/publish-context.sh).
-Until that URL is live, implementations SHOULD load the context from this
+[`contexts/did-content-v1.jsonld`](contexts/did-content-v1.jsonld). The Kataru
+registry serves it at `https://did.kataru.io/did-content/v1` (and the v0.1 context,
+[`contexts/legacy-did-v1.jsonld`](contexts/legacy-did-v1.jsonld), at `/did/v1`).
+Until that deployment is live, implementations MAY load the context from this
 repository (e.g. via jsDelivr:
 `https://cdn.jsdelivr.net/gh/KataruInc/did-content-spec@main/contexts/did-content-v1.jsonld`).
 
@@ -496,6 +498,9 @@ produce `invalidDidDocument`; a resolver MUST NOT fall back to an unverified
 copy.
 
 Full algorithm: [`app/didcontent/log.py`](app/didcontent/log.py) `verify_log` / `resolve`.
+A production registry/resolver implementing §6.2 and §7 in Go is maintained by
+Kataru (serving `https://did.kataru.io`); it is tested against the vectors in
+[`examples/`](examples/).
 
 ### 6.3 Update
 

@@ -1,0 +1,33 @@
+name: Checks
+on:
+  pull_request:
+  push:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  reference-implementation:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python3 -m pip install --quiet -r app/requirements.txt jsonschema
+      - run: make test
+      - name: Test vectors are up to date
+        run: make check-examples
+      - name: Test vectors validate against the JSON Schema
+        run: |
+          python3 - <<'PY'
+          import json, jsonschema
+          schema = json.load(open("schemas/log-entry.schema.json"))
+          v = jsonschema.Draft202012Validator(schema)
+          for line in open("examples/did.jsonl"):
+              errors = list(v.iter_errors(json.loads(line)))
+              assert not errors, errors
+          print("vectors valid")
+          PY
+      - name: Contexts are valid JSON
+        run: for f in contexts/*.jsonld; do python3 -m json.tool "$f" >/dev/null; done
